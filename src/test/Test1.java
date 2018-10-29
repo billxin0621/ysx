@@ -41,7 +41,7 @@ public class Test1 {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd hh");
 		String str1 = sdf.format(date1);
-		long long1 = Integer.parseInt(str1);
+		//long long1 = Integer.parseInt(str1);
 		String str2 = sdf.format(date2);
 		try {
 			String time1 = "2018-08-08 01:05:06";
