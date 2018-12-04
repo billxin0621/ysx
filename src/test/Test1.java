@@ -1,5 +1,7 @@
 package test;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -39,23 +41,36 @@ public class Test1 {
 		
 		//时间格式化
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd hh");
+		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 		String str1 = sdf.format(date1);
 		//long long1 = Integer.parseInt(str1);
 		String str2 = sdf.format(date2);
 		try {
 			String time1 = "2018-08-08 01:05:06";
-			String time2 = "2018-08-09 09:06:06";
-			String time3 = time1.substring(0, 13);
-			String time4 = time2.substring(0, 13);
+			String time2 = "2018-08-08 03:51:06";
+			String time3 = time1.substring(0, 16);
+			String time4 = time2.substring(0, 16);
 			Date date3 = sdf2.parse(time3);
 			Date date4 = sdf2.parse(time4);
 			long b = date3.getTime();//1970-01-01距今的毫秒数
 			long d = date4.getTime();//1970-01-01距今的毫秒数
-			long e = (d - b) / (1000 * 60 * 60);
+			long e = (d - b) / (1000 * 60 );
+			long f = (d - b) % (1000 * 60 );
+			double g = e/60;
+			long h = e%60;
+			double k = (double)h / 60;
+			BigDecimal n = new BigDecimal(g+k);
+			BigDecimal m = n.setScale(2, RoundingMode.HALF_DOWN);
+	
+			System.out.println(m);
 			System.out.println("time3	:"+time3);
 			System.out.println("time4	:"+time4);
+			System.out.println("date3	:"+date3);
+			System.out.println("date4	:"+date4);
+			System.out.println("b	:"+b);
+			System.out.println("d	:"+d);
 			System.out.println("e	:"+e);
+			System.out.println("f	:"+f);
 			String str = time1.substring(5, 9);
 			//String []arr = time1.split(" ");
 			//System.out.println(arr.length);
